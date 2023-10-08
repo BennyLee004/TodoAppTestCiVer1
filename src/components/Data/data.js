@@ -1,0 +1,1 @@
+export const DATATODO = [{id: 1, text: "Meo", isCompleted: true}]
