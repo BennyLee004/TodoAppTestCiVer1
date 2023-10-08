@@ -1,5 +1,15 @@
 .todo {
     display: flex;
     gap:1em;
+    align-items: center;
+    justify-content: space-between;
+}
+.todo-center {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
 
+.trash {
+    margin-right: 1em;
+}

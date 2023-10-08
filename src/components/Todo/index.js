@@ -1,26 +1,21 @@
-import React from "react";
-import "./style.css"
-function Todo({ todos }) {
-  // console.log(todos)
-  // const [check, setCheck] = useState('checked');
-  // const handleChecked = () => {
-  //   setCheck("")
-  // }
+import { useState } from "react";
+import "./style.css";
+import * as Icon from "react-feather";
+
+function Todo({ todos, handleChecked, handleDeleteTodo }) {
   return (
     <div className="todo">
       <div className="todo-center">
-        <input
-          class="form-check-input"
-          type="radio"
-          id="checkboxNoLabel"
-          value="true"
-          aria-label="..."
-          checked
-          // onClick={handleChecked}
-          
-                  />
-      </div>
+        {todos.isCompleted ? (
+          <Icon.CheckCircle size={18} onClick={() => handleChecked(todos.id)} />
+        ) : (
+          <Icon.Circle size={18} onClick={() => handleChecked(todos.id)} />
+        )}
       <span>{todos.text}</span>
+      </div>
+      <div className="trash">
+        <Icon.Trash size={18} onClick={() => handleDeleteTodo(todos.id)} />
+      </div>
     </div>
   );
 }
