@@ -11,9 +11,8 @@ function TodoPages() {
   const addTodo = (todo) => {
     setDataTodo((todos) => [...todos, todo]);
   };
-
   useEffect(() => {
-    console.log("dataTodo at Localstorage :>> ", dataTodo);
+    // console.log("dataTodo at Localstorage :>> ", dataTodo);
   }, [dataTodo]);
   useEffect(() => {
     setFilterTodo(dataTodo);
@@ -32,7 +31,24 @@ function TodoPages() {
     }
     setFilterTodo(filteredList);
   };
-  console.log()
+  const handleChecked = (id) => {
+    setDataTodo(
+      dataTodo.map((todo) => {
+        if (todo.id ===id) {
+          todo.isCompleted = !todo.isCompleted
+        }
+        return todo
+      })
+    )
+    }
+    const handleDeleteTodo = (id) => {
+        const newTodos = dataTodo.filter((todo) => todo.id !== id)
+        setDataTodo(newTodos)
+    }
+    const handleDeleteAll = () => {
+      setDataTodo([])
+    }
+
   return (
     <div className="todo-page container">
       <h2>#todo</h2>
@@ -42,7 +58,9 @@ function TodoPages() {
         <li onClick={() => handleFilterByStatus("completed")}>Completed</li>
       </ul>
       <AddTodo addTodo={addTodo} />
-      <TodoList dataTodo={filterTodo}  />
+      <TodoList dataTodo={filterTodo} handleChecked={handleChecked} handleDeleteTodo={handleDeleteTodo}  />
+      <button  type="button" class="btn btn-outline-danger" onClick={handleDeleteAll}>Clear All</button>
+
     </div>
   );
 }
