@@ -12,7 +12,7 @@ function TodoPages() {
     setDataTodo((todos) => [...todos, todo]);
   };
   useEffect(() => {
-    // console.log("dataTodo at Localstorage :>> ", dataTodo);
+
   }, [dataTodo]);
   useEffect(() => {
     setFilterTodo(dataTodo);
